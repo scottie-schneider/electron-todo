@@ -19,11 +19,12 @@ function createAddWindow() {
 		height: 200,
 		title: 'Add New Todo'
 	});
+	addWindow.loadURL(`file://${__dirname}/add.html`);·
 }
 // Create menu template
 const menuTemplate = [
 	{
-		label: 'File', 
+		label: 'File',
 		submenu: [
 			{
 				label: 'New Todo',
