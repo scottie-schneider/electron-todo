@@ -49,6 +49,7 @@ const menuTemplate = [
 		submenu: [
 			{
 				label: 'New Todo',
+				accelerator: process.platform === 'darwin' ? 'Command+N' : 'Ctrl+N',
 				click() {
 					createAddWindow();
 				}

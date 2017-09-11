@@ -26,7 +26,7 @@
       // destructure the value off the input
       const { value } = document.querySelector('input');
       // send the event
-      // Next step is to set up the ipcMain in index.html to receive
+      // Next step is to set up the ipcMain in index.js to receive
       ipcRenderer.send('todo:add', value);
     });
   </script>
