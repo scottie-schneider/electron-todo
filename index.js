@@ -23,11 +23,19 @@ function createAddWindow() {
 		title: 'Add New Todo'
 	});
 	addWindow.loadURL(`file://${__dirname}/add.html`);
+	addWindow.on('closed', () => addWindow = null);
 }
 
 // Listen for the todo add event coming in from the electron window
 ipcMain.on('todo:add', (event, todo) => {
 	mainWindow.webContents.send('todo:add', todo);
+	addWindow.close();
+	// garbage collection
+	// after we close a browser window, we will always take the variable
+	// referencing that browser window and point it to null.
+	// We are now no longer maintaining a reference to the browser window
+	// and allows JS to clear up memory.
+	// See the 'addWindow.on('closed') event handler under function createAddWindow
 });
 
 // Create menu template
