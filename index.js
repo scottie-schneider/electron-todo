@@ -9,7 +9,7 @@ app.on('ready', () => {
 	mainWindow = new BrowserWindow({});
 	mainWindow.loadURL(`file://${__dirname}/main.html`);
 	// Quits the entire app if main window is closed
-	// - prevents the 'add todo' window doesn't stay open on main app close 
+	// - prevents the 'add todo' window doesn't stay open on main app close
 	mainWindow.on('closed', () => app.quit());
 	// Create the menu from the template below
 	const mainMenu = Menu.buildFromTemplate(menuTemplate);
@@ -48,4 +48,21 @@ const menuTemplate = [
 // Checking to see if it's a mac OS we're on, to add the menu option filler object
 if(process.platform === 'darwin'){
 	menuTemplate.unshift({});
+}
+
+// check to see if we're in production or development, to enable console
+
+if(process.env.NODE_ENV !== 'production'){
+	menuTemplate.push({
+		label: 'Developer',
+		submenu: [
+			{
+				label: 'Toggle Developer Tools',
+				accelerator: 'Command+Shift+I',
+				click(item, focusedWindow){
+					focusedWindow.toggleDevTools();
+				}
+			}
+		]
+	});
 }
