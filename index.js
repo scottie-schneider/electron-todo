@@ -57,7 +57,7 @@ const menuTemplate = [
 			{
 				label: 'Clear Todos',
 				click() {
-					clearTodos();
+					clearTodos();·
 				}
 			},
 			{
