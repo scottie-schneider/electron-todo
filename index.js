@@ -70,6 +70,8 @@ if(process.env.NODE_ENV !== 'production'){
 	menuTemplate.push({
 		label: 'Developer',
 		submenu: [
+			// adding in the reload again, using the standard electron option
+			{ role: 'reload' },
 			{
 				label: 'Toggle Developer Tools',
 				accelerator: 'darwin' ? 'Command+Shift+I' : 'Ctrl+Shift+I',
